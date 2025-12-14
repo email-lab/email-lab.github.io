@@ -1,469 +1,842 @@
-<!DOCTYPE HTML>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Robotics Lab</title>
-  <meta name="author" content="Peng Zhou">
-  <meta name="description" content="Robotics Lab - Team Members, Publications, Awards, and Join Us">
-  <meta name="keywords" content="Robotics Lab, Team, Publications, Awards, Join Us">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <link rel="icon" type="image/png" href="imgs/team/lab_icon.png">
-  <script src="function.js"></script>
+  <meta charset="UTF-8" />
+  <title>EMAIL Robotics Lab</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#0f1733;
+      --card:#0f1a3b;
+      --text:#e9eefc;
+      --muted:#b8c4ea;
+      --faint:#7f8bb3;
+      --brand:#7aa2ff;
+      --brand2:#7ef0d2;
+      --stroke:rgba(255,255,255,.12);
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius:16px;
+      --radius2:22px;
+      --max:1120px;
+      --topbar:72px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{
+      scroll-behavior: smooth; /* smooth scroll */
+    }
+    body{
+      margin:0;
+      padding-top: var(--topbar);
+      color:var(--text);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 800px at 12% 10%, rgba(122,162,255,.18), transparent 60%),
+        radial-gradient(900px 700px at 88% 14%, rgba(126,240,210,.14), transparent 58%),
+        radial-gradient(900px 900px at 50% 90%, rgba(154,123,255,.10), transparent 55%),
+        linear-gradient(180deg, #070a14, #0b1020 40%, #070a14);
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .skip{
+      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip:focus{
+      left:20px; top:20px; width:auto; height:auto;
+      background:#111a3a; border:1px solid var(--stroke);
+      padding:10px 12px; border-radius:12px; z-index:9999;
+    }
+    .topbar{
+      position:fixed; inset:0 0 auto 0; z-index:50;
+      width:100%;
+      backdrop-filter: blur(10px);
+      background:rgba(7,10,20,.62);
+      border-bottom:1px solid var(--stroke);
+    }
+  
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 220px;
+    }
+    .logo-img{
+      width:40px;
+      height:40px;
+      display:block;
+      object-fit:contain;
+      border-radius:12px;
+      padding:6px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
+      flex:0 0 auto;
+    }
+    .brand h1{
+      font-size:14px; line-height:1.1; margin:0;
+      letter-spacing:.35px;
+    }
+    .brand p{
+      margin:3px 0 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .links{
+      display:flex; align-items:center; gap:16px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .links a:hover{
+      color:var(--text);
+      border-color: var(--stroke);
+      background: rgba(255,255,255,.04);
+    }
+    .cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      text-decoration:none;
+      color:var(--text);
+      font-size:13px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+      white-space:nowrap;
+    }
+    .btn.primary{
+      border-color: rgba(122,162,255,.45);
+      background: linear-gradient(135deg, rgba(122,162,255,.22), rgba(126,240,210,.12));
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0px)}
+    .dot{
+      width:8px;height:8px;border-radius:99px;
+      background: var(--brand2);
+      box-shadow: 0 0 0 4px rgba(126,240,210,.12);
+    }
+
+    /* Hero */
+    header.hero{ padding:46px 0 24px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .hero-card{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:240px; height:240px;
+      background: radial-gradient(circle at 30% 30%, rgba(122,162,255,.38), transparent 60%);
+      filter: blur(2px);
+      transform: rotate(18deg);
+    }
+    .kicker{
+      display:flex; align-items:center; gap:10px;
+      color:var(--muted);
+      font-size:13px;
+      margin:0 0 10px;
+      position:relative;
+      z-index:1;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      width:max-content;
+    }
+    .title{
+      margin:0;
+      font-size:34px;
+      line-height:1.08;
+      letter-spacing:-.6px;
+      position:relative;
+      z-index:1;
+    }
+    .subtitle{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+      position:relative;
+      z-index:1;
+    }
+    .pill-row{
+      margin-top:14px;
+      display:flex; flex-wrap:wrap; gap:10px;
+      position:relative; z-index:1;
+    }
+    .pill{
+      font-size:12px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+    }
+    .hero-side{
+      display:grid;
+      grid-template-rows: auto 1fr;
+      gap:14px;
+    }
+    .figure{
+      border:1px solid var(--stroke);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      background: rgba(255,255,255,.02);
+      box-shadow: var(--shadow);
+      min-height: 220px;
+      position:relative;
+    }
+    .figure .ph{
+      position:absolute; inset:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      text-align:center;
+      color:var(--muted);
+      gap:10px;
+      background:
+        radial-gradient(700px 300px at 20% 20%, rgba(122,162,255,.12), transparent 55%),
+        radial-gradient(600px 260px at 75% 40%, rgba(126,240,210,.10), transparent 55%);
+    }
+    .figure strong{color:var(--text)}
+    .figure small{color:var(--faint); line-height:1.35}
+    section{padding:22px 0}
+    /* Prevent sticky header overlap on anchor jumps */
+    section, header.hero { scroll-margin-top: var(--topbar); }
+    section{padding:22px 0}
+    /* Prevent sticky header overlap on anchor jumps */
+    section, header.hero { scroll-margin-top: 90px; }
+
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-bottom:12px;
+    }
+    h2{ margin:0; font-size:18px; letter-spacing:.2px; }
+    .section-head p{ margin:0; color:var(--muted); font-size:13px; }
+    .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+    .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
+    .card{
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 14px 35px rgba(0,0,0,.25);
+      padding:16px;
+    }
+    .card h3{ margin:0 0 10px; font-size:14px; letter-spacing:.2px; }
+    .card p, .card li{ color:var(--muted); font-size:13px; line-height:1.6; }
+    ul.clean{margin:0; padding-left:18px}
+    .callouts{ display:flex; flex-direction:column; gap:12px; }
+    .callout{
+      display:flex; gap:12px; align-items:flex-start;
+      border:1px solid var(--stroke);
+      background: linear-gradient(135deg, rgba(122,162,255,.10), rgba(126,240,210,.06));
+      border-radius: var(--radius);
+      padding:14px;
+    }
+    .callout .icon{
+      width:38px; height:38px;
+      border-radius:14px;
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--stroke);
+      display:grid; place-items:center;
+      flex: 0 0 auto;
+      color:var(--text);
+      font-weight:700;
+    }
+    .muted{color:var(--muted)}
+    .people{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
+    .person{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:14px;
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.02);
+    }
+    .avatar{
+      width:44px;height:44px;border-radius:16px;
+      border:1px solid var(--stroke);
+      background: radial-gradient(circle at 30% 30%, rgba(122,162,255,.30), rgba(255,255,255,.02));
+      flex:0 0 auto;
+      position:relative;
+      overflow:hidden;
+    }
+    .avatar::after{
+      content:"";
+      position:absolute; inset:-20px -30px auto auto;
+      width:60px; height:60px;
+      background: radial-gradient(circle, rgba(126,240,210,.18), transparent 60%);
+      transform: rotate(25deg);
+    }
+    .person h4{ margin:0; font-size:13px; letter-spacing:.2px; }
+    .person .role{ margin:2px 0 0; color:var(--muted); font-size:12px; }
+    .person .affil{ margin:7px 0 0; color:var(--faint); font-size:12px; line-height:1.35; }
+
+    .news{ display:flex; flex-direction:column; gap:10px; }
+    .news-item{
+      padding:12px 14px;
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.02);
+    }
+    .news-item .year{ font-size:12px; color:var(--faint); margin:0 0 4px; }
+    .news-item .text{ margin:0; font-size:13px; color:var(--muted); line-height:1.55; }
+
+    .footer{
+      padding:28px 0 40px;
+      border-top:1px solid var(--stroke);
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:start;
+    }
+    .fine{color:var(--faint); font-size:12px; line-height:1.5}
+    code.inline{
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--stroke);
+      border-radius:10px;
+      padding:2px 8px;
+      color:var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr; }
+      .hero-side{grid-template-rows:auto auto}
+      .grid-3{grid-template-columns: 1fr;}
+      .people{grid-template-columns: 1fr;}
+      .footer-grid{grid-template-columns: 1fr;}
+      .links{display:none}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .btn:hover{transform:none}
+    }
+  </style>
+  <script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.3f7572448765332f3047.js"></script>
 </head>
-
 <body>
-<table width="840" border="0" align="center" cellspacing="0" cellpadding="20">
-  <tbody>
-    <tr>
-      <td>
-        <p align="center">
-            <!-- Add GBU logo -->
-            <img src="imgs/gbu-logo.png" alt="GBU Logo" width="200px" style="margin-right: 20px; vertical-align: middle;">
-            
-            <!-- Add Lab icon -->
-            <img src="imgs/email-lab-logo.png" alt="Lab Icon" width="120px" style="vertical-align: middle;">
-          </p>
+  <a class="skip" href="#main">Skip to content</a>
 
-        <!-- Title -->
-        <p align="center">
-          <pageheading>Embodied MAnipulation InteLligence （EMAIL） Robotics Lab</pageheading><br>
-        </p>
+  <div class="topbar">
+    <div class="wrap nav">
 
-                <!-- Introduction -->
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <sectionheading>Introduction</sectionheading>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p align="justify">
-                            The EMAIL-lab at the <a href="https://www.gbu.edu.cn/" target="_blank">Great Bay University</a>（GBU）focuses on research in robotic manipulation, with a particular emphasis on tasks involving <b>deformable object manipulation</b>, <b>multi-modal dexterous manipulation</b> (e.g., vision and touch), as well as <b>task and motion planning</b>. By integrating <i>data-driven learning</i>, <i>geometric modeling</i>, and <i>robot control</i> techniques, the lab is dedicated to achieving precise perception, modeling, planning, and control during manipulation processes, with the goal of enabling robots to perform at or even surpass human-level manipulation capabilities.
-                          </p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+    <a class="brand" href="#top" style="text-decoration:none;">
+      <img
+        class="logo-img"
+        src="./imgs/logos/lab.png"
+        alt="EMAIL Robotics Lab logo"
+        style="width:56px;height:56px;object-fit:cover;border:1px solid rgba(122,162,255,.45);border-radius:14px;background:transparent;padding:0;box-shadow:0 0 12px rgba(122,162,255,.55), 0 0 24px rgba(126,240,210,.35);"
+      >
+      <div>
+        <h1 style="font-size:16px;">EMAIL Robotics Lab</h1>
+        <!-- <p>Great Bay University (GBU)</p> -->
+      </div>
+    </a>
 
-
-
- <!-- CfP -->
-
- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-  <tbody>
-    <tr>
-      <td>
-        <sectionheading>Call for Papers</sectionheading>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div style="background: #e8f4ff; border: 2px solid #2691d9; border-radius: 8px; padding: 18px 20px; margin: 12px 0;">
-          <ul style="margin: 0; padding-left: 20px; list-style: none;">
-            <li style="margin-bottom: 12px; white-space: nowrap; overflow-x: auto;">
-              <span style="font-size: 1.2em; color: #2691d9;">📢</span>
-              <b>[Workshop]</b>
-              <a href="https://cim-workshop.github.io/" style="color: #1565c0;">
-                Workshop on Contact and Impact-aware Manipulation</a> @ 
-              <a href="https://www.iros25.org/">
-                <img src="https://www.iros25.org/templates/iros2025/static/images/logo.png" alt="IROS 2025 Logo" style="height:38px;vertical-align:middle;margin-right:3px;">
-              </a> 
-            </li>
-
-            <li style="margin-bottom: 12px; white-space: nowrap; overflow-x: auto;">
-              <span style="font-size: 1.2em; color: #2691d9;">📢</span>
-              <b>[Special Issue]</b>
-              <a href="https://www.frontiersin.org/research-topics/70782/enhancing-robotic-dexterity-through-advanced-learning-and-multimodal-perception" target="_blank" style="color: #1565c0;">
-                Enhancing robotic dexterity through advanced learning and multimodal perception
-              </a>
-              @ 
-              <img src="https://www.european-mrs.com/sites/default/files/field/image/logo_frontiers_grey.png" alt="Frontiers Logo" style="height:28px;vertical-align:middle;margin-right:3px;">
-            </li>
-
-          
-          </ul>
+      <div class="links">
+        <a href="#news">News</a>
+        <a href="#research">Research</a>
+        <a href="#people">People</a>
+        <a href="#featured">Featured</a>
+        <div class="cta">
+          <a class="btn primary" href="#join"><span class="dot"></span> Join / Contact</a>
         </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </div>
+    </div>
+  </div>
 
+  <header id="top" class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-card">
+        <p class="kicker"><span class="dot"></span> Manipulation · Learning · Modelling · Planning</p>
+  
+        <h1 class="title">Embodied MAnipulation InteLligence (EMAIL)</h1>
+        <p class="subtitle">
+          We develop algorithms and systems for intelligent robotic manipulation in real-world settings. Our research focuses on multi-modal perception (e.g., vision and touch/force), dexterous manipulation, and task &amp; motion planning, combining data-driven learning, geometric modeling, and robot control.
+        </p>
+        <div class="pill-row">
+          <a class="btn primary" href="#featured">→ Explore Featured Work</a>
+          <a class="btn" href="#join">✦ Collaborate / Join</a>
+          <a class="btn" href="#people">⌁ Meet the Team</a>
+        </div>
 
+        <!-- &nbsp; -->
+        <!-- <div style="margin-top:24px; border-top:1px solid var(--stroke);"></div> -->
+        <div style="margin-top:24px; border-top:1px solid var(--stroke);"></div>
 
-
-
-      
-
- 
-        <!-- Team Members -->
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tbody>
-            <tr>
-              <!-- <td colspan="2"> -->
-                <td>
-                <sectionheading style="display: block; margin-bottom: -5px;">Team Members</sectionheading>
-              </td>
-            </tr>
-
-
-            <tr>
-                <!-- Member 1 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/me.jpg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 120px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b><a href="https://jeffery-zhou.github.io/" target="_blank">Dr. Peng Zhou</a></b><br>
-                        Lab PI<br>
-                        Assistant Professor<br>
-                        @ The Great Bay University
-                      </p>
-                    </div>
-                  </div>
-                </td>
-            
-                <!-- Member 2 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/david_grey.avif" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 120px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b><a href="https://www.polyu.edu.hk/me/david/" target="_blank">Prof. David Navarro-Alarcon <br> 毛大衛</a></b><br>
-                        Co-PI on all programs<br>
-                        @ The Polytechnic University of Hong Kong
-                      </p>
-                    </div>
-                  </div>
-                </td>
-            
-                <!-- Member 3 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/jpan_full.jpg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 120px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b><a href="https://www.cs.hku.hk/people/academic-staff/jpan" target="_blank">Prof. Jia Pan</a></b><br>
-                        Co-PI on Ph.D. program<br>
-                        @ The University of Hong Kong
-                      </p>
-                    </div>
-                  </div>
-                </td>
-            
-                <!-- Member 4 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/prof_jiang.jpg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 120px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b><a href="https://faculty.hitsz.edu.cn/jiangxin" target="_blank">Prof. Xin Jiang</a></b><br>
-                        Co-PI on Ph.D. program<br>
-                        @ Harbin Institute of Technology, Shenzhen
-                      </p>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-
-            
-           
-
-
-              <tr>
-                <!-- Member 1 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/Cropped_Zhen.jpeg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b><a href="http://staff.ustc.edu.cn/~zkan/" target="_blank">Prof. Kan Zhen</a></b><br>
-                        Co-PI on Postdoc program<br>
-                        @ University of Science and Technology of China
-                      </p>
-                    </div>
-                  </div>
-                </td>
-              
-                <!-- Member 2 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                    <div style="display: flex; flex-direction: column; align-items: center;">
-                      <img src="imgs/team/dr_hu.jpg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                      <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                        <p style="font-size: 14px; margin: 0;">
-                          <b>Dr. Jun Hu</b><br>
-                          Postdoc Researcher (2025)<br>
-                          Tsinghua Shenzhen International Graduate School
-                          <!-- Ph.D. in Precision Instrument and Machinery from<br> -->
-                          <!-- University of Science and Technology of China -->
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-
-
-                <!-- Member 3 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/zhognxuan.jpg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b><a href="https://dieselmarble.github.io/" target="_blank">Zhongxun Li</a></b><br>
-                        Visiting Ph.D. Student<br>
-                        The University of Hong Kong
-                        <!-- <br> -->
-                        <!-- BEng, MEng degree from Imperial College London -->
-                      </p>
-                    </div>
-                  </div>
-                </td>
-              
-                
-              
-                <!-- Member 4 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/ziyuan.png" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b>Ziyuan Wang</b><br>
-                        Ph.D. Student (2025)<br>
-                        Harbin Institute of Technology, Shenzhen
-                        <!-- MSc in Electronic Information Engineering<br> -->
-                        <!-- from Huazhong University of Science and Technology -->
-                      </p>
-                    </div>
-                  </div>
-                </td>
-              </tr>    
-
-              <tr>
-
-
-                
-                <!-- Member 1 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/chenxi.jpg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b>Xi Chen</b><br>
-                        Master Student(2025)<br>
-                         Shenzhen University<br> 
-                      </p>
-                    </div>
-                  </div>
-                </td>
-              
-                <!-- Member 2 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/zeliangguo_samll.jpg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b>Zeliang Guo</b><br>
-                        Visting Master Student<br>
-                         The University of Manchester 
-                      </p>
-                    </div>
-                  </div>
-                </td>
-
-                <!-- Member 3 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/fangjun.png" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b>Fangjun Chen</b><br>
-                        Visting Undergraduate Student<br>
-                         Southern University of Science and Technology
-                      </p>
-                    </div>
-                  </div>
-                </td>
-
-                <!-- Member 4 -->
-                <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/fangyuan.jpg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b>Fangyuan Wang</b><br>
-                        Visting Ph.D. Student<br>
-                         The Hong Kong Polytechnic University
-                      </p>
-                    </div>
-                  </div>
-                </td>
-
-
-                <!-- Member 3 -->
-                <!-- <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/zhognxuan.jpg" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b><a href="https://dieselmarble.github.io/" target="_blank">Zhongxun Li</a></b><br>
-                        Visiting Ph.D. Student<br>
-                        The University of Hong Kong<br>
-                        BEng, MEng degree from Imperial College London
-                      </p>
-                    </div>
-                  </div>
-                </td> -->
-              
-                
-              
-                <!-- Member 4 -->
-                <!-- <td width="25%" style="text-align: center; vertical-align: top;">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="imgs/team/ziyuan.png" style="width: 150px; height: 180px; border-radius: 4px; object-fit: cover;">
-                    <div style="height: 130px; margin-top: 10px; overflow: hidden;">
-                      <p style="font-size: 14px; margin: 0;">
-                        <b>Ziyuan Wang</b><br>
-                        Ph.D. Student (2025)<br>
-                        MSc in Electronic Information Engineering<br>
-                        from Huazhong University of Science and Technology
-                      </p>
-                    </div>
-                  </div>
-                </td> -->
-
-              </tr>     
+        <div style="margin-top:18px; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px;">
+          <video src="./videos/tele-k.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);"> asdfs </video>
+          <video src="./videos/tele-vr.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);"></video>
+            <div style="margin-top:12px; color:var(--muted); font-size:13px; line-height:1.5;">
+          <strong>Highlights:</strong> UniBiDex Teleoperation System with Kinematics Device, immersive VR, 
+          (🥇 T.J. Tarn Best Paper Finalist Award in Robotics @ IEEE ROBIO2025).
+        </div>
+          <video src="./videos/dex-challenge.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);"></video>
+        </div>
+        <div style="margin-top:12px; color:var(--muted); font-size:13px; line-height:1.5;">
+          <strong>Highlights:</strong> 🥇 Champion Award-winning dexterous challenge runs using UniBiDex Teleoperation System for International Dexterity Challenge 2025.
+        </div>
        
-
-          </tbody>
-        </table>
-
-        <!-- Publications -->
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-          <tbody>
-            <tr>
-              <td>
-                <sectionheading>News</sectionheading>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <ul>
-
-                  <li>
-                    <b>[2025]</b> <a href="https://sites.google.com/view/iros-2025-workshop-cim">Workshop on Contact and Impact-aware Manipulation (IROS 2025)</a> is accepted by IROS 2025.
-                  </li>
-
-                   <li>
-                    <b>[2025]</b> Dr. Zhou is serving as an <b>Associate Editor</b> for <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7083369">IEEE Robotics and Automation Letters</a>.
-                  </li>
-
-                  <li>
-                    <b>[2025]</b> <a href="https://ieeexplore.ieee.org/abstract/document/11018378">A Joint Learning of Force Feedback of Robotic Manipulation and Textual Cues for Granular Materials Classification</a>, IEEE Robotics and Automation Letters.
-                  </li>
-
-                  <li>
-                    <b>[2025]</b> <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11009179">Iterative Shaping of Multi-Particle Aggregates based on Action Trees and VLM</a>, IEEE Robotics and Automation Letters.
-                  </li>
-
-                  <li>
-                    <b>[2025]</b> <a href="https://ieeexplore.ieee.org/abstract/document/11016126"> Explicit-Implicit Subgoal Planning for Long-Horizon Tasks with Sparse Rewards</a>, IEEE Transactions on Automation Science and Engineering.
-                  </li>
-
-                 
+      </div>
 
 
-                  <li>
-                    <b>[2024]</b> <a href="https://arxiv.org/abs/2401.11432">Deformable Bag Manipulation using Neural Particle-based Dynamics Model</a>, IEEE/ASME Transactions on Mechatronics.
-                  </li>
-                  <li>
-                    <b>[2024]</b> <a href="https://ieeexplore.ieee.org/document/10605907">Interactive Perception for Deformable Bag Manipulation</a>, IEEE Robotics and Automation Letters.
-                  </li>
-                  <li>
-                    <b>[2023]</b> <a href="https://ieeexplore.ieee.org/abstract/document/10378708">Imitating Learning for Tool-based Garment Folding</a>, IEEE Transactions on Industrial Informatics.
-                  </li>
-                  <li><b>Track 3 Champion</b>, Zhuhai International Dexterous Manipulation Challenge, 2024.</li>
-                  <li><b>IEEE R10 Outstanding Volunteer Award</b>, 2023.</li>
-                  <li><b>Outstanding Young Researcher</b>, National Engineering Research Center, 2022.</li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-                <!-- Collaboration -->
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <sectionheading>In collaboration with</sectionheading>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center">
-                            <!-- Add logos -->
-                            
-                            <img src="imgs/hit.png" alt="HIT Logo" width="110px" style="margin: 10px;">
-                            <img src="imgs/Tsinghua.png" alt="Tsinghua Logo" width="110px" style="margin: 10px;">
-                            <img src="imgs/SZU.png" alt="SZU Logo" width="110px" style="margin: 10px;">
-
-                            <img src="imgs/team/PolyU.svg" alt="PolyU Logo" width="100px" style="margin: 10px;">
-                            <img src="imgs/team/hku.png" alt="HKU Logo" width="90px" style="margin: 10px;">
-                            <img src="imgs/team/hth2.webp" alt="KTH Logo" width="95px" style="margin: 10px;">
-                            
-                            
-                            
-                          
-                          </td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-              <!-- Collaboration -->
-              <table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-                <tbody>
-                  <tr>
-                    <td>
-                      <sectionheading>Robots</sectionheading>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="center">
-                        <!-- Add logos -->
-                        <img src="imgs/team/ur5.webp" alt="PolyU Logo" width="100px" style="margin: 10px;">
-                        <img src="imgs/team/franka.png" alt="HKU Logo" width="100px" style="margin: 10px;">
-                        <img src="imgs/orca-hand.jpg" alt="Orca" width="120px" style="margin: 10px;">
-                        <!-- <img src="imgs/team/allegro_v5.avif" alt="KTH Logo" width="100px" style="margin: 10px;"> -->
-                        <img src="imgs/team/gelsight.png" alt="York University Logo" width="100px" style="margin: 10px;">
-                        <img src="imgs/team/tac3d.png" alt="York University Logo" width="100px" style="margin: 10px;">
 
 
-                      </td>
-                  </tr>
-                </tbody>
-              </table>
 
-                  
-        <!-- Join Us -->
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-          <tbody>
-            <tr>
-              <td>
-                <sectionheading>Join Us</sectionheading>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  We are always looking for talented and motivated individuals to join our lab. If you are interested in robotics, machine learning, or computer vision, please contact us at pzhou AT gbu DOT edu DOT cn.
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      <div class="hero-side">
+        <!-- Slim, theme-matching scroll area -->
+        <div style="margin-top:0px;">
+          <img src="./imgs/news/rl_si_hrn.png" alt="Intelligent Vision-Driven Robotics special issue" style="width:100%; max-width:520px; border-radius:14px; border:1px solid var(--stroke); background:rgba(255,255,255,.03); box-shadow: var(--shadow);">
+          <p style="margin:8px 0 0; color:var(--faint); font-size:12px;">Special issue cover: Intelligent Vision-Driven Robotics.</p>
+        </div>
+
+
+
+
+        <!-- Slim, theme-matching scroll area for News -->
+        <div class="card" id="hero-news" style="min-height:360px; max-height:360px; overflow-y:auto; font-size:12px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent; background: rgba(255,255,255,.03);">
+          <h3 style="font-size:13px; margin-top:0;">News</h3>
+          <div class="news" role="list" style="gap:10px; margin:0;">
+
+
+             <div class="news-item" role="listitem" style="padding:10px 12px;">
+              <p class="year" style="margin:0 0 4px; font-size:12px; color:var(--faint);">2025.10 <span style="margin-left:6px; color:var(--muted); font-weight:600;">🥇 Best Paper Finalist</span></p>
+              <p class="text" style="margin:0; font-size:12px; color:var(--muted); line-height:1.45;">
+                T.J. Tarn Best Paper Finalist Award in Robotics @ IEEE ROBIO2025</p>
+            </div>  
+
+
+            <div class="news-item" role="listitem" style="padding:10px 12px;">
+              <p class="year" style="margin:0 0 4px; font-size:12px; color:var(--faint);">2025.10 <span style="margin-left:6px; color:var(--muted); font-weight:600;">🥇 Award</span></p>
+              <p class="text" style="margin:0; font-size:12px; color:var(--muted); line-height:1.45;">
+                2025 International Dexterous Manipulation Challenge Champion.</p>
+            </div>    
+
+            <div class="news-item" role="listitem" style="padding:10px 12px;">
+              <p class="year" style="margin:0 0 4px; font-size:12px; color:var(--faint);">2025.8 <span style="margin-left:6px; color:var(--muted); font-weight:600;"> Editorial</span></p>
+              <p class="text" style="margin:0; font-size:12px; color:var(--muted); line-height:1.45;">
+                Dr. Zhou is serving as an AE for IEEE RA-L.
+              </p>
+            </div>
+
+            <div class="news-item" role="listitem" style="padding:10px 12px;">
+              <p class="year" style="margin:0 0 4px; font-size:12px; color:var(--faint);">2025.6 <span style="margin-left:6px; color:var(--muted); font-weight:600;">📄 Journal</span></p>
+              <p class="text" style="margin:0; font-size:12px; color:var(--muted); line-height:1.45;">
+                <!-- Joint Learning of Force Feedback and Textual Cues — IEEE RA-L. -->
+                A Hierarchical Laser Control Strategy for Spatially Uniform Thermal Dose Delivery in Laser-Induced Thermal Therapy Accepted by IEEE/ASME T-Mech.
+              </p>
+            </div>            
+
+            <div class="news-item" role="listitem" style="padding:10px 12px;">
+              <p class="year" style="margin:0 0 4px; font-size:12px; color:var(--faint);">2024.10 <span style="margin-left:6px; color:var(--muted); font-weight:600;">🥇 Award</span></p>
+              <p class="text" style="margin:0; font-size:12px; color:var(--muted); line-height:1.45;">
+                2024 International Dexterous Manipulation Challenge Champion.</p>
+            </div>
+
+
+  
+
+          </div>
+        </div>
+
+
+<!-- 
+        <div class="card" id="call-card" style="min-height:220px; max-height:220px; overflow-y:auto; font-size:12px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent; background: rgba(255,255,255,.03);">
+          <h3 style="font-size:13px; margin-top:0;">Call for Papers</h3>
+          <div class="callouts" role="list" style="gap:10px; font-size:12px; margin:0;">
+            <div class="callout" role="listitem" style="padding:10px;">
+              <div class="icon" aria-hidden="true" style="font-size:12px;">📢</div>
+              <div>
+          <a href="https://www.elspub.com/journals/rl/special_issues/intelligent-vision-driven-robotics" target="_blank" rel="noopener noreferrer" style="display:block; text-decoration:none; color:inherit;">
+            <div class="muted" style="font-size:12px; line-height:1.4;">
+              [Special Issue] on <strong>Intelligent Vision-Driven Robotics</strong> @
+              <span style="color:var(--faint)">ELSP Robot Learning</span>
+            </div>
+          </a>
+              </div>
+            </div>
+
+            <div class="callout" role="listitem" style="padding:10px;">
+              <div class="icon" aria-hidden="true" style="font-size:12px;">📢</div>
+              <div>
+          <a href="https://www.frontiersin.org/research-topics/70782/enhancing-robotic-dexterity-through-advanced-learning-and-multimodal-perception" target="_blank" rel="noopener noreferrer" style="display:block; text-decoration:none; color:inherit;">
+            <div class="muted" style="font-size:12px; line-height:1.4;">
+              [Special Issue] on
+              <strong>Enhancing robotic dexterity</strong> through advanced learning and multimodal perception @
+              <span style="color:var(--faint)">Frontiers on Robotics and AI</span>
+            </div>
+          </a>
+              </div>
+            </div>
+
+            <div class="callout" role="listitem" style="padding:10px;">
+              <div class="icon" aria-hidden="true" style="font-size:12px;">📢</div>
+              <div>
+          <a href="https://cim-workshop.github.io/" target="_blank" rel="noopener noreferrer" style="display:block; text-decoration:none; color:inherit;">
+            <div class="muted" style="font-size:12px; line-height:1.4;">
+              [Workshop] on <strong>Contact and Impact-aware Manipulation</strong> @
+              <span style="color:var(--faint)">IROS2025</span>
+            </div>
+          </a>
+              </div>
+            </div>
+          </div>
+          <p class="fine" style="margin:10px 0 0; font-size:11px; color:var(--faint);">
+            More CFPs coming soon. Share links to add.
+          </p>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const call = document.getElementById('call-card');
+            const news = document.getElementById('hero-news');
+            if (call && news && news.parentNode) {
+              news.parentNode.insertBefore(call, news.nextSibling);
+            }
+          });
+        </script> -->
+
+
+
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <main id="main">
+
+    <!-- <section id="news">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>News</h2>
+          <p>Recent highlights from the lab (selected).</p>
+        </div>
+        <div class="grid-2">
+          <div class="callouts">
+            <div class="callout"><div class="icon">25</div><div><strong>IROS Workshop</strong><br><span class="muted">Contact &amp; Impact-aware Manipulation accepted.</span></div></div>
+            <div class="callout"><div class="icon">AE</div><div><strong>IEEE RA-L</strong><br><span class="muted">Associate Editor service.</span></div></div>
+            <div class="callout"><div class="icon">🥇</div><div><strong>Champion 2024</strong><br><span class="muted">Dexterous Manipulation Challenge.</span></div></div>
+          </div>
+          <div class="news">
+            <div class="news-item"><p class="year">2025</p><p class="text">Workshop on Contact and Impact-aware Manipulation is accepted by IROS 2025.</p></div>
+            <div class="news-item"><p class="year">2025</p><p class="text">Dr. Zhou is serving as an Associate Editor for IEEE Robotics and Automation Letters.</p></div>
+            <div class="news-item"><p class="year">2025</p><p class="text">A Joint Learning of Force Feedback and Textual Cues — IEEE RA-L.</p></div>
+            <div class="news-item"><p class="year">2025</p><p class="text">Iterative Shaping of Multi-Particle Aggregates — IEEE RA-L.</p></div>
+            <div class="news-item"><p class="year">2025</p><p class="text">Explicit-Implicit Subgoal Planning — IEEE T-ASE.</p></div>
+            <div class="news-item"><p class="year">2024</p><p class="text">Deformable Bag Manipulation using Neural Particle-based Dynamics Model — IEEE/ASME T-Mech.</p></div>
+            <div class="news-item"><p class="year">2024</p><p class="text">Interactive Perception for Deformable Bag Manipulation — IEEE RA-L.</p></div>
+            <div class="news-item"><p class="year">2023</p><p class="text">Imitating Learning for Tool-based Garment Folding — IEEE TII.</p></div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Core Focus Areas</h2>
+          <p>Deformable object manipulation, multi-modal perception, and long-horizon autonomy.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <img src="./imgs/exps/bag_before.png" alt="Deformable bag" style="width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);margin-bottom:10px;" onmouseover="this.src='./imgs/exps/bag_after.gif'" onmouseout="this.src='./imgs/exps/bag_before.png'">
+            <h3>Deformable Object Manipulation</h3>
+            <p>Learning and modeling for non-rigid materials (garments, bags, granular materials), including neural particle-based dynamics and interactive perception under contact.</p>
+          </div>
+          <div class="card">
+            <img src="./imgs/exps/tool_before.png" alt="Dexterous manipulation" style="width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);margin-bottom:10px;" onmouseover="this.src='./imgs/exps/tool_after.gif'" onmouseout="this.src='./imgs/exps/tool_before.png'">
+            <h3>Dexterous Manipulation</h3>
+            <p>Perception and control that fuse vision with touch/force feedback to handle uncertainty, detect contact, and improve dexterity.</p>
+          </div>
+          <div class="card">
+            <img src="./imgs/exps/neuralpath_before.png" alt="Task and motion planning" style="width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);margin-bottom:10px;" onmouseover="this.src='./imgs/exps/neuralpath_after.gif'" onmouseout="this.src='./imgs/exps/neuralpath_before.png'">
+            <h3>Task &amp; Motion Planning</h3>
+            <p>Planning for long-horizon manipulation, including subgoal reasoning under sparse rewards and contact-aware trajectories.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="people">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Team Members</h2>
+          <p>EMAIL Robotics Lab</p>
+        </div>
+
+        <div class="people">
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/pi_me.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">PI</div>
+              </div>
+              <div><h4>Dr. Peng Zhou</h4><p class="role">Lab PI · Assistant Professor</p><p class="affil">Great Bay University (GBU)</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/pi_david_grey.avif" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">PI</div>
+              </div>
+              <div><h4>Prof. David Navarro-Alarcon</h4><p class="role">Co-PI on Ph.D. programs</p><p class="affil">The Hong Kong Polytechnic University</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/pi_panjia.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">PI</div>
+              </div>
+              <div><h4>Prof. Jia Pan</h4><p class="role">Co-PI on Ph.D. program</p><p class="affil">The University of Hong Kong</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/mem_Hujun.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">Manager</div>
+              </div>
+              <div><h4>Dr. Jun Hu</h4><p class="role">Postdoc Researcher (2025)</p><p class="affil">Tsinghua Shenzhen International Graduate School</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/mem_zhognxuan.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">PhD</div>
+              </div>
+              <div><h4>Zhongxun Li</h4><p class="role">Visiting Ph.D. Student</p><p class="affil">The University of Hong Kong</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/mem_ziyuan.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">PhD</div>
+              </div>
+              <div><h4>Ziyuan Wang</h4><p class="role">Ph.D. Student (2025)</p><p class="affil">Harbin Institute of Technology, Shenzhen</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/mem_chenxi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">Master</div>
+              </div>
+              <div><h4>Xi Chen</h4><p class="role">M.S. Student (2025)</p><p class="affil">Shenzhen University</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/mem_Sihanchen.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">PhD</div>
+              </div>
+              <div><h4>Sihan Chen</h4><p class="role">Visiting Ph.D. Student</p><p class="affil">The University of Hong Kong</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/mem_guozeliang.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">Alumni</div>
+              </div>
+              <div><h4>Zeliang Guo</h4><p class="role">Visiting M.S. Student</p><p class="affil">The University of Manchester</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/mem_fangjun.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">Alumni</div>
+              </div>
+              <div><h4>Fangjun Chen</h4><p class="role">Visiting Undergraduate Student</p><p class="affil">Southern University of Science and Technology</p></div>
+              </div>
+
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/mem_fangyuan.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">Alumni</div>
+              </div>
+              <div><h4>Fangyuan Wang</h4><p class="role">Visiting Ph.D. Student</p><p class="affil">The Hong Kong Polytechnic University</p></div>
+              </div>
+              
+              <div class="person">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                <div class="avatar"><img src="./imgs/team/mem_guorui.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px;"></div>
+                <div class="badge" style="font-size:11px; padding:4px 8px;">Alumni</div>
+              </div>
+              <div><h4>Guorui Pei</h4><p class="role">Visiting Undergraduate Student</p><p class="affil">Taiyuan University of Technology</p></div>
+            </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Selected Publications</h2>
+          <p>PDF/code/video links updated when available.</p>
+        </div>
+
+        <div class="callouts">
+          
+            <div class="callout">
+            <div class="icon">J</div>
+            <div>
+              <div style="font-size:14px;font-weight:700;">Explicit-Implicit Subgoal Planning for Long-Horizon Tasks with Sparse Rewards</div>
+              <div class="muted" style="font-size:13px;">IEEE Transactions on Automation Science and Engineering, 2025</div>
+            </div>
+            </div>
+
+            <div class="callout">
+            <div class="icon">J</div>
+            <div>
+              <div style="font-size:14px;font-weight:700;">Joint Learning of Force Feedback and Textual Cues for Granular Materials Classification</div>
+              <div class="muted" style="font-size:13px;">IEEE Robotics and Automation Letters, 2025</div>
+            </div>
+            </div>
+
+            <div class="callout">
+            <div class="icon">J</div>
+            <div>
+              <div style="font-size:14px;font-weight:700;">Iterative Shaping of Multi-Particle Aggregates based on Action Trees and VLM</div>
+              <div class="muted" style="font-size:13px;">IEEE Robotics and Automation Letters, 2025</div>
+            </div>
+            </div>
+
+            <div class="callout">
+            <div class="icon">J</div>
+            <div>
+              <div style="font-size:14px;font-weight:700;">Deformable Bag Manipulation using Neural Particle-based Dynamics Model</div>
+              <div class="muted" style="font-size:13px;">IEEE/ASME Transactions on Mechatronics, 2024</div>
+            </div>
+            </div>
+
+            <div class="callout">
+            <div class="icon">J</div>
+            <div>
+              <div style="font-size:14px;font-weight:700;">Interactive Perception for Deformable Bag Manipulation</div>
+              <div class="muted" style="font-size:13px;">IEEE Robotics and Automation Letters, 2024</div>
+            </div>
+            </div>
+
+        </div>
+
+      </div>
+    </section>
+    <section id="hardware">
+      <div class="wrap">
+      <div class="section-head">
+        <h2>Robots &amp; Devices</h2>
+        <p>Key platforms powering our manipulation research.</p>
+      </div>
+
+      <div class="card" style="text-align:center;">
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:16px;">
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/ur5.webp" alt="UR5" width="110" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">1. UR7e * 1</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/xarm7.avif" alt="Franka Emika Panda" width="110" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">2. xArm 7 * 2</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/marvin.png" alt="Marvin Mobile Base" width="110" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">3. Marvin * 1</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/orca-hand.png" alt="Orca Hand" width="130" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">4. Infi Hand * 2</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/pantheon.png" alt="Pantheon Hand" width="130" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">5. Pantheon Hand * 2</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/gelsight.png" alt="GelSight Sensor" width="110" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">6. GelSight Sensor * 10</div>
+        </div>
+
+        <!-- <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+        <img src="imgs/robots/tac3d.png" alt="Tac3D Sensor" width="110" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+        <div style="font-size:12px; color:var(--muted);">7. Tac3D Sensor</div>
+      </div> -->
+
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Open to Collaboration &amp; Recruitment</h2>
+          <p>We welcome talents in robotics, learning, and control.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card"><h3>Openings</h3><p>Ph.D. students, postdocs, visiting students, and research interns (subject to program availability).</p></div>
+          <div class="card"><h3>What to Send</h3><p>CV + short research statement + (optional) representative paper/code/demo link.</p></div>
+          <div class="card"><h3>Contact</h3><p>Email (obfuscated): <code class="inline">pzhou AT gbu DOT edu DOT cn</code></p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <div>© <span id="year"></span> EMAIL Robotics Lab. All rights reserved.</div>
+        <div class="fine">Crafted as a lightweight single-page site with GPT-5.2 assistance.</div>
+      </div>
+      <div class="fine">Embodied MAnipulation InteLligence — Great Bay University (GBU).</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
