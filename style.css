@@ -97,6 +97,12 @@ a{color:inherit}
   border-color: var(--stroke);
   background: rgba(255,255,255,.04);
 }
+.links a.active{
+  color:var(--text);
+  border-color: rgba(122,162,255,.45);
+  background: linear-gradient(135deg, rgba(122,162,255,.22), rgba(126,240,210,.12));
+  box-shadow: 0 0 12px rgba(122,162,255,.25);
+}
 .cta{
   display:flex; gap:10px; align-items:center;
 }
