@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hardware – EMAIL Robotics Lab</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="topbar">
+    <div class="wrap nav">
+    <a class="brand" href="./index.html" style="text-decoration:none;">
+      <img class="logo-img" src="./imgs/logos/lab.png" alt="EMAIL Robotics Lab logo"
+        style="width:56px;height:56px;object-fit:cover;border:1px solid rgba(122,162,255,.45);border-radius:14px;background:transparent;padding:0;box-shadow:0 0 12px rgba(122,162,255,.55), 0 0 24px rgba(126,240,210,.35);">
+      <div>
+        <h1 style="font-size:16px;">EMAIL Robotics Lab</h1>
+      </div>
+    </a>
+      <div class="links">
+        <a href="./index.html">Home</a>
+        <a href="./research.html">Research</a>
+        <a href="./people.html">Team</a>
+        <a href="./publications.html">Publications</a>
+        <a href="./hardware.html">Hardwares</a>
+        <div class="cta">
+          <a class="btn primary" href="./services.html"><span class="dot"></span> Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section id="hardware">
+      <div class="wrap">
+      <div class="section-head">
+        <h2>Robots &amp; Devices</h2>
+        <p>Key platforms powering our manipulation research.</p>
+      </div>
+
+      <div class="card" style="text-align:center;">
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:16px;">
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/marvinpro.png" alt="Marvin Mobile Base" width="110" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">3. Marvin Pro * 1</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/ur5.webp" alt="UR5" width="110" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">1. UR7e * 3</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/xarm7.avif" alt="Franka Emika Panda" width="110" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">2. xArm 7 * 4</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/orca-hand.png" alt="Orca Hand" width="130" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">4. Infi Hand * 4</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/pantheon.png" alt="Pantheon Hand" width="130" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">5. Pantheon Hand * 2</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:140px;">
+          <img src="imgs/robots/gelsight.png" alt="GelSight Sensor" width="110" style="border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02);">
+          <div style="font-size:12px; color:var(--muted);">6. GelSight Sensor * 20</div>
+        </div>
+
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <div>&copy; <span id="year"></span> EMAIL Robotics Lab. All rights reserved.</div>
+        <div class="fine">Crafted as a lightweight single-page site with GPT-5.2 assistance.</div>
+      </div>
+      <div class="fine">Embodied MAnipulation InteLligence — Great Bay University (GBU).</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

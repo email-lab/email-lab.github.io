@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Research – EMAIL Robotics Lab</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="topbar">
+    <div class="wrap nav">
+    <a class="brand" href="./index.html" style="text-decoration:none;">
+      <img class="logo-img" src="./imgs/logos/lab.png" alt="EMAIL Robotics Lab logo"
+        style="width:56px;height:56px;object-fit:cover;border:1px solid rgba(122,162,255,.45);border-radius:14px;background:transparent;padding:0;box-shadow:0 0 12px rgba(122,162,255,.55), 0 0 24px rgba(126,240,210,.35);">
+      <div>
+        <h1 style="font-size:16px;">EMAIL Robotics Lab</h1>
+      </div>
+    </a>
+      <div class="links">
+        <a href="./index.html">Home</a>
+        <a href="./research.html">Research</a>
+        <a href="./people.html">Team</a>
+        <a href="./publications.html">Publications</a>
+        <a href="./hardware.html">Hardwares</a>
+        <div class="cta">
+          <a class="btn primary" href="./services.html"><span class="dot"></span> Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section id="featured-demos">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Featured Demos</h2>
+          <p>Highlights from our recent teleoperation and dexterous manipulation work.</p>
+        </div>
+        <div class="card" style="padding:18px;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px;">
+            <video src="./videos/tele-k.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);"></video>
+            <video src="./videos/tele-vr.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);"></video>
+            <div style="margin-top:12px; color:var(--muted); font-size:13px; line-height:1.5;">
+              <strong>Highlights:</strong> UniBiDex Teleoperation System with Kinematics Device, immersive VR,
+              (🥇 T.J. Tarn Best Paper Finalist Award in Robotics @ IEEE ROBIO2025).
+            </div>
+            <video src="./videos/dex-challenge.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);"></video>
+          </div>
+          <div style="margin-top:12px; color:var(--muted); font-size:13px; line-height:1.5;">
+            <strong>Highlights:</strong> 🥇 Champion Award-winning dexterous challenge runs using UniBiDex Teleoperation System for International Dexterity Challenge 2025.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Featured Research</h2>
+          <p>Deformable object manipulation, multi-modal perception, and long-horizon autonomy.</p>
+        </div>
+
+        <div class="grid-3">
+
+          <div class="card">
+            <h3>Deformable Object Manipulation</h3>
+            <figure style="width:100%; margin:0 0 10px 0;">
+              <img src="./videos/fig-dom.png" alt="Deformable object manipulation" style="width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);">
+            </figure>
+            <video src="./videos/dom-exp.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); margin-bottom:10px;"></video>
+            <p>Learning and modeling for non-rigid materials (garments, bags, granular materials), including neural particle-based dynamics and interactive perception under contact.</p>
+          </div>
+
+          <div class="card">
+            <h3>Dexterous Manipulation</h3>
+            <figure style="width:100%; margin:0 0 10px 0;">
+              <img src="./videos/fig-hand-arm.png" alt="Dexterous manipulation" style="width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);">
+            </figure>
+            <video src="./videos/hand-arm-exp.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); margin-bottom:10px;"></video>
+            <p>Perception and control that fuse vision with touch/force feedback to handle uncertainty, detect contact, and improve dexterity.</p>
+          </div>
+
+          <div class="card">
+            <h3>Task &amp; Motion Planning</h3>
+            <figure style="width:100%; margin:0 0 10px 0;">
+              <img src="./videos/fig-tele-mani.png" alt="Task and motion planning" style="width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--stroke);">
+            </figure>
+            <video src="./videos/telemani.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); margin-bottom:10px;"></video>
+            <p>Planning for long-horizon manipulation, including subgoal reasoning under sparse rewards and contact-aware trajectories.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <div>&copy; <span id="year"></span> EMAIL Robotics Lab. All rights reserved.</div>
+        <div class="fine">Crafted as a lightweight single-page site with GPT-5.2 assistance.</div>
+      </div>
+      <div class="fine">Embodied MAnipulation InteLligence — Great Bay University (GBU).</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
