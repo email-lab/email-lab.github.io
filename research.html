@@ -51,17 +51,96 @@
           <p>Highlights from our recent teleoperation and dexterous manipulation work.</p>
         </div>
         <div class="card" style="padding:18px;">
-          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px;">
-            <video src="./videos/tele-k.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);"></video>
-            <video src="./videos/tele-vr.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);"></video>
-            <div style="margin-top:12px; color:var(--muted); font-size:13px; line-height:1.5;">
-              <strong>Highlights:</strong> UniBiDex Teleoperation System with Kinematics Device, immersive VR,
-              (🥇 T.J. Tarn Best Paper Finalist Award in Robotics @ IEEE ROBIO2025).
+          <!-- Featured Demos Video Carousel: 2 visible at a time -->
+          <div class="ialp-carousel" id="demo-video-carousel">
+            <div class="ialp-carousel-track" style="--visible:2;">
+              <div class="ialp-carousel-slide">
+                <video src="./videos/tele-k.mp4" controls preload="metadata"></video>
+                <div class="ialp-slide-label">Teleoperation — Kinematics Device</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <video src="./videos/tele-vr.mp4" controls preload="metadata"></video>
+                <div class="ialp-slide-label">Teleoperation — Immersive VR</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <video src="./videos/dex-challenge.mp4" controls preload="metadata"></video>
+                <div class="ialp-slide-label">Dexterous Challenge</div>
+              </div>
             </div>
-            <video src="./videos/dex-challenge.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);"></video>
+            <button class="ialp-carousel-btn ialp-prev" aria-label="Previous videos" onclick="ialpSlide('demo-video-carousel',-1)">&#10094;</button>
+            <button class="ialp-carousel-btn ialp-next" aria-label="Next videos" onclick="ialpSlide('demo-video-carousel',1)">&#10095;</button>
+            <div class="ialp-carousel-dots" id="demo-video-dots"></div>
           </div>
           <div style="margin-top:12px; color:var(--muted); font-size:13px; line-height:1.5;">
-            <strong>Highlights:</strong> 🥇 Champion Award-winning dexterous challenge runs using UniBiDex Teleoperation System for International Dexterity Challenge 2025.
+            <strong>Highlights:</strong> UniBiDex Teleoperation System with Kinematics Device, immersive VR
+            (🥇 T.J. Tarn Best Paper Finalist Award in Robotics @ IEEE ROBIO2025).
+            <br>
+            🥇 Champion Award-winning dexterous challenge runs using UniBiDex Teleoperation System for International Dexterity Challenge 2025.
+          </div>
+        </div>
+
+        <!-- IALP: Instruction-Augmented Long-Horizon Planning -->
+        <div class="card" style="padding:18px; margin-top:18px;">
+          <div style="margin-bottom:12px; color:var(--muted); font-size:14px; line-height:1.5;">
+            <strong>IALP:</strong> Instruction-Augmented Long-Horizon Planning — Embedding Grounding Mechanisms in Embodied Mobile Manipulation (AAAI 2024).
+          </div>
+
+          <!-- Video Carousel: 3 visible at a time -->
+          <div class="ialp-carousel" id="ialp-video-carousel">
+            <div class="ialp-carousel-track" id="ialp-video-track" style="--visible:3;">
+              <div class="ialp-carousel-slide">
+                <video src="./videos/ialp/pick.mp4" controls autoplay muted loop playsinline preload="metadata"></video>
+                <div class="ialp-slide-label">Pick</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <video src="./videos/ialp/cloth.mp4" controls autoplay muted loop playsinline preload="metadata"></video>
+                <div class="ialp-slide-label">Cloth</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <video src="./videos/ialp/pill.mp4" controls autoplay muted loop playsinline preload="metadata"></video>
+                <div class="ialp-slide-label">Pill</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <video src="./videos/ialp/book.mp4" controls autoplay muted loop playsinline preload="metadata"></video>
+                <div class="ialp-slide-label">Book</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <video src="./videos/ialp/bucket.mp4" controls autoplay muted loop playsinline preload="metadata"></video>
+                <div class="ialp-slide-label">Bucket</div>
+              </div>
+            </div>
+            <button class="ialp-carousel-btn ialp-prev" aria-label="Previous videos" onclick="ialpSlide('ialp-video-carousel',-1)">&#10094;</button>
+            <button class="ialp-carousel-btn ialp-next" aria-label="Next videos" onclick="ialpSlide('ialp-video-carousel',1)">&#10095;</button>
+            <div class="ialp-carousel-dots" id="ialp-video-dots"></div>
+          </div>
+
+          <!-- Image Carousel: 1 visible at a time -->
+          <div class="ialp-carousel" id="ialp-img-carousel" style="margin-top:14px;">
+            <div class="ialp-carousel-track" id="ialp-img-track" style="--visible:1;">
+              <div class="ialp-carousel-slide">
+                <img src="./imgs/ialp/plans-box.png" alt="IALP pick plan">
+                <div class="ialp-slide-label">Pick Plan</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <img src="./imgs/ialp/plans-cloth.png" alt="IALP cloth plan">
+                <div class="ialp-slide-label">Cloth Plan</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <img src="./imgs/ialp/plans-drawer.png" alt="IALP drawer plan">
+                <div class="ialp-slide-label">Drawer Plan</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <img src="./imgs/ialp/plans-book.png" alt="IALP book plan">
+                <div class="ialp-slide-label">Book Plan</div>
+              </div>
+              <div class="ialp-carousel-slide">
+                <img src="./imgs/ialp/plans-bucket.png" alt="IALP bucket plan">
+                <div class="ialp-slide-label">Bucket Plan</div>
+              </div>
+            </div>
+            <button class="ialp-carousel-btn ialp-prev" aria-label="Previous image" onclick="ialpSlide('ialp-img-carousel',-1)">&#10094;</button>
+            <button class="ialp-carousel-btn ialp-next" aria-label="Next image" onclick="ialpSlide('ialp-img-carousel',1)">&#10095;</button>
+            <div class="ialp-carousel-dots" id="ialp-img-dots"></div>
           </div>
         </div>
       </div>
@@ -118,5 +197,129 @@
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <style>
+    .ialp-carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .ialp-carousel-track {
+      display: flex;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .ialp-carousel-slide {
+      flex: 0 0 calc(100% / var(--visible));
+      padding: 0 5px;
+      box-sizing: border-box;
+    }
+    .ialp-carousel-slide video,
+    .ialp-carousel-slide img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      display: block;
+    }
+    .ialp-slide-label {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    .ialp-carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-60%);
+      background: rgba(15,26,59,.85);
+      color: var(--brand);
+      border: 1px solid var(--stroke);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+    }
+    .ialp-carousel-btn:hover {
+      background: rgba(122,162,255,.25);
+    }
+    .ialp-prev { left: 6px; }
+    .ialp-next { right: 6px; }
+    .ialp-carousel-dots {
+      text-align: center;
+      padding: 8px 0 2px;
+    }
+    .ialp-carousel-dots span {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      margin: 0 4px;
+      border-radius: 50%;
+      background: var(--stroke);
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .ialp-carousel-dots span.active {
+      background: var(--brand);
+    }
+  </style>
+
+  <script>
+  (function(){
+    function initCarousel(id) {
+      var el = document.getElementById(id);
+      var track = el.querySelector('.ialp-carousel-track');
+      var slides = track.querySelectorAll('.ialp-carousel-slide');
+      var visible = parseInt(getComputedStyle(track).getPropertyValue('--visible'));
+      var total = slides.length;
+      var maxIdx = total - visible;
+      var idx = 0;
+      el._ialpState = { idx: idx, maxIdx: maxIdx, visible: visible, total: total };
+
+      // build dots
+      var dotsEl = el.querySelector('.ialp-carousel-dots');
+      dotsEl.innerHTML = '';
+      for (var i = 0; i <= maxIdx; i++) {
+        var dot = document.createElement('span');
+        dot.dataset.i = i;
+        if (i === 0) dot.className = 'active';
+        dot.addEventListener('click', (function(ci){ return function(){ goTo(el, ci); }; })(i));
+        dotsEl.appendChild(dot);
+      }
+      updateTrack(el);
+    }
+
+    function updateTrack(el) {
+      var s = el._ialpState;
+      var track = el.querySelector('.ialp-carousel-track');
+      var pct = (100 / s.total) * s.idx;
+      track.style.transform = 'translateX(-' + pct + '%)';
+      var dots = el.querySelectorAll('.ialp-carousel-dots span');
+      dots.forEach(function(d){ d.classList.remove('active'); });
+      if (dots[s.idx]) dots[s.idx].classList.add('active');
+    }
+
+    function goTo(el, i) {
+      var s = el._ialpState;
+      s.idx = Math.max(0, Math.min(i, s.maxIdx));
+      updateTrack(el);
+    }
+
+    window.ialpSlide = function(id, dir) {
+      var el = document.getElementById(id);
+      var s = el._ialpState;
+      goTo(el, s.idx + dir);
+    };
+
+    initCarousel('demo-video-carousel');
+    initCarousel('ialp-video-carousel');
+    initCarousel('ialp-img-carousel');
+  })();
+  </script>
 </body>
 </html>
