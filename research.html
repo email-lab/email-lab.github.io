@@ -51,9 +51,9 @@
           <p>Highlights from our recent teleoperation and dexterous manipulation work.</p>
         </div>
         <div class="card" style="padding:18px;">
-          <!-- Featured Demos Video Carousel: 2 visible at a time -->
+          <!-- Featured Demos Video Carousel: 3 visible at a time -->
           <div class="ialp-carousel" id="demo-video-carousel">
-            <div class="ialp-carousel-track" style="--visible:2;">
+            <div class="ialp-carousel-track" style="--visible:3;">
               <div class="ialp-carousel-slide">
                 <video src="./videos/tele-k.mp4" controls preload="metadata"></video>
                 <div class="ialp-slide-label">Teleoperation — Kinematics Device</div>
@@ -187,16 +187,8 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer-grid">
-      <div>
-        <div>&copy; <span id="year"></span> EMAIL Robotics Lab. All rights reserved.</div>
-        <div class="fine">Crafted as a lightweight single-page site with GPT-5.2 assistance.</div>
-      </div>
-      <div class="fine">Embodied MAnipulation InteLligence (EMAIL) Robotics Lab.</div>
-    </div>
-  </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <div id="shared-footer"></div>
+  <script src="./footer.js"></script>
 
   <style>
     .ialp-carousel {
